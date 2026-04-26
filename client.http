@@ -1,0 +1,54 @@
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "esto",
+  "password": "password123"
+}
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "azky",
+  "password": "aski"
+}
+
+###
+### ===== CONVERSATION ENDPOINTS =====
+### Replace TOKEN with the actual token from login response
+
+### 1. Create a new conversation
+POST http://localhost:3000/api/conversations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "title": "Chat about AI"
+}
+
+###
+### 2. Get all conversations for authenticated user
+GET http://localhost:3000/api/conversations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 3. Get specific conversation by ID
+GET http://localhost:3000/api/conversations/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 4. Rename conversation (update title)
+PATCH http://localhost:3000/api/conversations/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "title": "Updated Chat Title"
+}
+
+###
+### 5. Delete conversation (soft delete)
+DELETE http://localhost:3000/api/conversations/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
