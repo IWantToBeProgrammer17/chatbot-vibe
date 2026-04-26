@@ -5,7 +5,7 @@
 Saya ingin membuat aplikasi chatbot menggunakan Gemini API Key. Chatbot tersebut memiliki fitur sebagai berikut:
 - login and register
 - role (admin dan user). Untuk role admin, akan petama kali dibuat oleh sistem dengan ketentuan berikut:
-    - username: 'admin', password: 'admin123'
+    - username: `admin`, password: `admin123`
 - Chatbot interface
     - Chatbot detail
     - Send chat
