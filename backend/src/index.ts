@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import conversationRoutes from './routes/conversations';
+import messageRoutes from './routes/messages';
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/conversations', conversationRoutes);
-// app.use('/api/messages', messageRoutes);
+app.use('/api', messageRoutes);
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

@@ -50,5 +50,73 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hb
 
 ###
 ### 5. Delete conversation (soft delete)
-DELETE http://localhost:3000/api/conversations/1
+DELETE http://localhost:3000/api/conversations/1Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### ===== MESSAGE ENDPOINTS =====
+### Replace TOKEN and IDs with actual values
+
+### 1. Create a new message in a conversation
+POST http://localhost:3000/api/conversations/1/messages
+Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "content": "Halo, apa itu AI?",
+  "senderType": "user"
+}
+
+###
+### 2. Create AI response message
+POST http://localhost:3000/api/conversations/1/messages
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "content": "AI (Artificial Intelligence) adalah cabang ilmu komputer yang fokus pada penciptaan sistem yang dapat melakukan tugas-tugas yang biasanya memerlukan kecerdasan manusia.",
+  "senderType": "ai"
+}
+
+###
+### 3. Get all messages for a conversation (with pagination)
+GET http://localhost:3000/api/conversations/1/messages?skip=0&take=20
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 4. Get messages filtered by sender type (user only)
+GET http://localhost:3000/api/conversations/1/messages/sender/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 5. Get messages filtered by sender type (ai only)
+GET http://localhost:3000/api/conversations/1/messages/sender/ai
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhekt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 6. Get a specific message by ID
+GET http://localhost:3000/api/messages/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhekt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+###
+### 7. Update message content
+PATCH http://localhost:3000/api/messages/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhekt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "content": "Updated message content"
+}
+
+###
+### 8. Update message typing status (for AI responses)
+PATCH http://localhost:3000/api/messages/1/typing
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhekt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
+
+{
+  "isTyping": true
+}
+
+###
+### 9. Delete a message
+DELETE http://localhost:3000/api/messages/1Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhemt5Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NzcxNzcxMDEsImV4cCI6MTc3Nzc4MTkwMX0.HqGiS7MuRqitUnCQZTU0Biy8f9d_8yItY40khXMnGhc
